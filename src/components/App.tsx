@@ -40,12 +40,9 @@ export function App() {
                 }
             };
 
-            // 필요한 API만 병렬로 호출
+            // 필요한 API만 병렬로 호출 (AtCoder는 클라이언트에서 프록시를 통해 직접 fetch)
             if (shouldFetch(SOLVEDAC_CACHE_KEY)) {
                 fetchPromises.push(fetchAndCache("/api/solvedac", SOLVEDAC_CACHE_KEY));
-            }
-            if (shouldFetch(ATCODER_CACHE_KEY)) {
-                fetchPromises.push(fetchAndCache("/api/atcoder", ATCODER_CACHE_KEY));
             }
             if (shouldFetch(SEKAI_CACHE_KEY)) {
                 fetchPromises.push(fetchAndCache("/api/sekai", SEKAI_CACHE_KEY));
