@@ -1,6 +1,6 @@
 {
   "main": "dist/_worker.js/index.js",
-  "name": "profile-blog",
+  "name": "linktree",
   "compatibility_date": "2025-12-09",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "assets": {
