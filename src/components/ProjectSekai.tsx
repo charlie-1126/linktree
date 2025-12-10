@@ -203,12 +203,12 @@ export function ProjectSekai() {
                                         className="w-full h-full object-cover"
                                         referrerPolicy="no-referrer"
                                         onError={(e) => {
-                                            e.currentTarget.style.display = "none";
+                                            const parent = e.currentTarget.parentElement;
+                                            if (parent) {
+                                                parent.innerHTML = '<div class="text-gray-500 text-xs">🎵</div>';
+                                            }
                                         }}
                                     />
-                                    <div className="absolute inset-0 flex items-center justify-center text-gray-500 text-xs pointer-events-none">
-                                        🎵
-                                    </div>
                                 </div>
                             )}
 
