@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { App } from '../components/App.tsx';
+
+// Fetch Discord data server-side for meta tags
+let discordUsername = 'gagtew';
+let discordAvatar = '/favicon.svg';
+
+try {
+  const response = await fetch('https://api.lanyard.rest/v1/users/719063773389914219');
+  const data = await response.json();
+  
+  if (data.success) {
+    const user = data.data.discord_user;
+    discordUsername = user.username || user.global_name || 'gagtew';
+    discordAvatar = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`;
+  }
+} catch (error) {
+  console.error('Failed to fetch Discord data for meta:', error);
+}
+---
+
+<Layout title={discordUsername} favicon={discordAvatar}>
+  <div class="min-h-screen bg-[#0f0f0f]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-12">
+      <App client:load />
+    </div>
+  </div>
+</Layout>
